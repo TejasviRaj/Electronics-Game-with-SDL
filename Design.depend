@@ -39,9 +39,10 @@
 	"SDL/SDL_ttf.h"
 	"manual_sdl.h"
 
-1489418050 source:h:\design\main.cpp
+1489423802 source:h:\design\main.cpp
 	"Design.h"
 	"digital.h"
+	"analog.h"
 
 1489415384 h:\design\manual_sdl.h
 	"SDL/SDL.h"
@@ -57,14 +58,18 @@
 	"SDL/SDL_ttf.h"
 	"manual_sdl.h"
 
-1489417635 h:\design\design.h
+1489423665 h:\design\design.h
 	"SDL/SDL.h"
 	"SDL/SDL_image.h"
 	"SDL/SDL_mixer.h"
 	"SDL/SDL_ttf.h"
 	<string>
 
-1489422211 h:\design\digital.h
+1489424082 h:\design\digital.h
+	<SDL/SDL.h>
+	"Design.h"
+
+1489424181 h:\design\analog.h
 	<SDL/SDL.h>
 	"Design.h"
 

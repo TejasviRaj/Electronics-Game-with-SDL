@@ -1,27 +1,21 @@
 #ifndef ANALOG_H_INCLUDED
 #define ANALOG_H_INCLUDED
-
-
-#include <iostream>
 #include <SDL/SDL.h>
-SDL_Event event;
-SDL_Surface *screen;
-SDL_Surface *resetBMP;
-SDL_Surface *setBMP;
-Uint32 screenColor;
-bool running = true;
+#include "Design.h"
+int level1_analog();
+
 using namespace std;
 
-class variable
+class circuit
 {
     protected:
 SDL_Rect box;
-    bool bit;
+    int bit;
 
 public:
-variable(){}
-variable(int a):bit(a){}
-variable( int x, int y)
+circuit(){}
+circuit(int a):bit(a){}
+circuit( int x, int y)
 {
     //Set the button's attributes
     box.x = x;
@@ -33,25 +27,16 @@ bit=0;
     flipscreen();
  //       SDL_Flip(screen);
 }
-    variable operator& (variable b)
+    circuit operator+ (circuit b)
     {
-        return variable(bit&b.bit);
+        return circuit(bit&b.bit);
     }
 
-     variable operator| (variable b)
+     circuit operator|| (circuit b)
     {
-        return variable(bit|b.bit);
+        return circuit(bit|b.bit);
     }
 
-    variable operator~ ()
-    {
-        return variable(!bit);
-    }
-
-   variable operator^ (variable b)
-    {
-        return variable(bit^b.bit);
-    }
 
     int get_bit()
     {
@@ -61,18 +46,27 @@ bit=0;
     void flipscreen()
     {
 
-    if (bit)
+    if (bit==1)
                {
 
                 SDL_BlitSurface(setBMP, NULL, screen, &box);
                  SDL_Flip(screen);
+
+
                }
-               else
+               else if (bit==0)
                {
                     SDL_BlitSurface(resetBMP, NULL, screen, &box);
 
                  SDL_Flip(screen);
+
                }
+
+             /*  else if (bit==2)
+               {
+                   SDL_BlitSurface (shortBMP,NULL,screen,&box);
+
+               }*/
     }
 
 
@@ -86,28 +80,15 @@ bit=0;
 };
 
 
-class output:public variable
-{
-public:
-    output(){}
-    output (int a,int b):variable(a ,b){}
 
-    output(variable a )
-    {
-
-        bit=a.get_bit();
-    }
-
-
-};
 
       // output o (200,200);
 
-class input:public variable
+class npn:public circuit
 {
     public:
 
-input (int a,int b):variable(a ,b){}
+npn (int a,int b):circuit(a ,b){}
 
 void click_check()
 {
@@ -138,36 +119,80 @@ void click_check()
 
 };
 
-class wire:public variable
+
+class branch:public circuit
 {
     public:
-        wire(){}
-wire(variable a )
+        branch(){}
+branch(circuit a )
     {
         bit=a.get_bit();
     }
 };
 
+branch circuit1,circuit2;
 
-
-
-
-void sdl_init();
-void sdl_quit();
-
-
-
-int main(int argc, char* argv[])
+class LED:public circuit
 {
+public:
+    LED(){}
+    LED (int a,int b):circuit(a ,b){}
 
-    sdl_init();
-        input a(60,40);
-        input b(100,150);
-        input c(200,200);
-        input d(300,300);
-        wire w1,w2;
+    LED(circuit a )
+    {
 
-        output o(0,0);
+        bit=a.get_bit();
+
+
+    }
+
+    check()
+    {
+        if ((circuit1.get_bit()==0 && circuit2.get_bit()==0) || (circuit1.get_bit()==0 && circuit2.get_bit()==1) )
+        {
+            bit=0;
+        }
+        else if (circuit1.get_bit()==1 && circuit2.get_bit()==0 )
+        {
+            bit=1;
+            level_completed();
+        }
+        else if (circuit1.get_bit()==1 && circuit2.get_bit()==1)
+            bit=0;
+    }
+
+
+};
+
+int load_analog()
+{
+    analog_loadfile();
+
+      return (level1_analog());
+
+}
+
+int level1_analog()
+{
+    running =true;
+        npn a(60,40);
+        npn b(100,80);
+        npn c(140,120);
+        npn d(180,160);
+        npn e(220,200);
+        npn f(240,240);
+        npn g(280,280);
+
+        branch b1,b2;
+
+        LED o(0,0);
+
+                levelno = TTF_RenderText_Solid(font,"Level 1",textcolor);
+applySurface(30,0,levelno,screen);
+
+        applySurface(330,150,levelImage,screen);
+        applySurface(1040,5,home,screen);
+        Buttons bo(1040,5,234,94);
     while(running)
     {
         while(SDL_PollEvent(&event))
@@ -178,51 +203,30 @@ int main(int argc, char* argv[])
                     running = false;
                     break;
             }
-            w1=a&b;
-        w2=c|d;
-o=w1&w2;
-//o.zero();
-o.setposition(0,0);
+
+       circuit1=(a+b)||(c+d);
+       circuit2=e+(f||g);
+o.check();
 o.flipscreen();
             a.click_check();
             b.click_check();
             c.click_check();
             d.click_check();
+                        e.click_check();
+            f.click_check();
+            g.click_check();
+bo.click_check();
+            if (bo.get_clicks()) return 2;
+
         }
     }
-  sdl_quit();
-}
-void sdl_init()
-{
-    SDL_Init(SDL_INIT_EVERYTHING);
-
-    screen = SDL_SetVideoMode(640, 480, 32, SDL_SWSURFACE);
-
-    setBMP = SDL_LoadBMP("set.bmp");
-
-    resetBMP=SDL_LoadBMP("Reset.bmp");
-
-    screenColor = SDL_MapRGB(screen->format, 25, 23, 90);
-     SDL_FillRect(screen, NULL, screenColor);
-
-
-}
-
-void sdl_quit()
-{
-      SDL_FreeSurface(screen);
-    SDL_FreeSurface(setBMP);
-    SDL_FreeSurface(resetBMP);
-
-    SDL_Quit();
-}
-
-void level1()
-{
-
 }
 
 
 
 
-#endif // ANALOG_H_INCLUDED
+#endif
+
+
+
+

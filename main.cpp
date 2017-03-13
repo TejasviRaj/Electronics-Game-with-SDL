@@ -1,6 +1,6 @@
 #include "Design.h"
 #include "digital.h"
-
+#include "analog.h"
 
 void mainpage_loading();
 
@@ -41,8 +41,11 @@ Buttons b3(618,475,164,72);
             mainpage_loading();
         }
 
-        if (bu1.get_clicks()) ;
-           // load_analog();
+        if (bu1.get_clicks())
+        {
+            if(load_analog()==2)
+            mainpage_loading();
+        }
 
     }
     else if (b2.get_clicks())

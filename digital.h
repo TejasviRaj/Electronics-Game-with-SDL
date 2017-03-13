@@ -4,7 +4,7 @@
 #include <SDL/SDL.h>
 #include "Design.h"
 int load_digital();
-int level1();
+int level1_digital();
 
 class variable
 {
@@ -152,12 +152,13 @@ int load_digital()
 {
     digital_loadfile();
 
-      return (level1());
+      return (level1_digital());
 
 }
 
-int level1()
+int level1_digital()
 {
+    running=true;
         input a(310,210);
         input b(310,270);
         input c(310,540);
