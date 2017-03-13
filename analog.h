@@ -124,6 +124,7 @@ class branch:public circuit
 {
     public:
         branch(){}
+        branch (int a):circuit(a){}
 branch(circuit a )
     {
         bit=a.get_bit();
@@ -175,23 +176,17 @@ int load_analog()
 int level1_analog()
 {
     running =true;
-        npn a(60,40);
-        npn b(100,80);
-        npn c(140,120);
-        npn d(180,160);
-        npn e(220,200);
-        npn f(240,240);
-        npn g(280,280);
+            applySurface(1040,5,home,screen);
 
-        branch b1,b2;
+        applySurface(0,0,levelImage,screen);
 
-        LED o(0,0);
+        npn a(415,600);
+        npn b(1018,287);
+        LED o(1030,478);
 
                 levelno = TTF_RenderText_Solid(font,"Level 1",textcolor);
 applySurface(30,0,levelno,screen);
 
-        applySurface(330,150,levelImage,screen);
-        applySurface(1040,5,home,screen);
         Buttons bo(1040,5,234,94);
     while(running)
     {
@@ -204,17 +199,13 @@ applySurface(30,0,levelno,screen);
                     break;
             }
 
-       circuit1=(a+b)||(c+d);
-       circuit2=e+(f||g);
+       circuit1=a;
+       circuit2=b;
 o.check();
 o.flipscreen();
             a.click_check();
             b.click_check();
-            c.click_check();
-            d.click_check();
-                        e.click_check();
-            f.click_check();
-            g.click_check();
+
 bo.click_check();
             if (bo.get_clicks()) return 2;
 

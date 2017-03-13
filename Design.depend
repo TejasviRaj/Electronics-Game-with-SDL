@@ -58,7 +58,7 @@
 	"SDL/SDL_ttf.h"
 	"manual_sdl.h"
 
-1489423665 h:\design\design.h
+1489425924 h:\design\design.h
 	"SDL/SDL.h"
 	"SDL/SDL_image.h"
 	"SDL/SDL_mixer.h"
@@ -69,7 +69,7 @@
 	<SDL/SDL.h>
 	"Design.h"
 
-1489424181 h:\design\analog.h
+1489428544 h:\design\analog.h
 	<SDL/SDL.h>
 	"Design.h"
 
