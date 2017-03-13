@@ -1,0 +1,73 @@
+# depslib dependency file v1.0
+1488211941 source:e:\my_folder\projects\c++ project\design\main.cpp
+	"SDL/SDL.h"
+	"SDL/SDL_mixer.h"
+	"SDL/SDL_image.h"
+	"SDL/SDL_ttf.h"
+	<string>
+	"manual_sdl.h"
+	"design_sdl.h"
+
+1488293601 e:\my_folder\projects\c++ project\design\design_sdl.h
+	<SDL/SDL.h>
+	"SDL/SDL_mixer.h"
+	"SDL/SDL_image.h"
+	"SDL/SDL_ttf.h"
+	"manual_sdl.h"
+
+1488191498 e:\my_folder\projects\c++ project\design\manual_sdl.h
+	"SDL/SDL.h"
+	"SDL/SDL_image.h"
+
+1489383853 source:d:\game\game\design\main.cpp
+	"SDL/SDL.h"
+	"SDL/SDL_mixer.h"
+	"SDL/SDL_image.h"
+	"SDL/SDL_ttf.h"
+	<string>
+	"manual_sdl.h"
+	"design_sdl.h"
+
+1489383853 d:\game\game\design\manual_sdl.h
+	"SDL/SDL.h"
+	"SDL/SDL_image.h"
+
+1489383853 d:\game\game\design\design_sdl.h
+	<SDL/SDL.h>
+	"SDL/SDL_mixer.h"
+	"SDL/SDL_image.h"
+	"SDL/SDL_ttf.h"
+	"manual_sdl.h"
+
+1489411983 source:h:\design\main.cpp
+	<string>
+	"manual_sdl.h"
+	"Design.h"
+
+1489413906 h:\design\manual_sdl.h
+	"SDL/SDL.h"
+	"SDL/SDL_image.h"
+	"SDL/SDL_mixer.h"
+	"SDL/SDL_ttf.h"
+	<string>
+
+1489407327 h:\design\design_sdl.h
+	<SDL/SDL.h>
+	"SDL/SDL_mixer.h"
+	"SDL/SDL_image.h"
+	"SDL/SDL_ttf.h"
+	"manual_sdl.h"
+
+1489411932 h:\design\design.h
+	"SDL/SDL.h"
+	"SDL/SDL_mixer.h"
+	"SDL/SDL_image.h"
+	"SDL/SDL_ttf.h"
+	<string>
+	"manual_sdl.h"
+	"digital.h"
+
+1489410190 h:\design\digital.h
+	<SDL/SDL.h>
+	"manual_sdl.h"
+
