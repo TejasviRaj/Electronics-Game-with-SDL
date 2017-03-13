@@ -1,10 +1,16 @@
-#ifndef DIGITAL_H_INCLUDED
-#define DIGITAL_H_INCLUDED
+#ifndef ANALOG_H_INCLUDED
+#define ANALOG_H_INCLUDED
 
+
+#include <iostream>
 #include <SDL/SDL.h>
-#include "Design.h"
-int load_digital();
-int level1();
+SDL_Event event;
+SDL_Surface *screen;
+SDL_Surface *resetBMP;
+SDL_Surface *setBMP;
+Uint32 screenColor;
+bool running = true;
+using namespace std;
 
 class variable
 {
@@ -22,7 +28,7 @@ variable( int x, int y)
     box.y = y;
     box.w = 65;
     box.h = 65;
-    bit=0;
+bit=0;
     //SDL_BlitSurface(resetBMP, NULL, screen, &box);
     flipscreen();
  //       SDL_Flip(screen);
@@ -73,13 +79,11 @@ variable( int x, int y)
 
     void setposition(int x,int y)
     {
-    box.x = x;
+        box.x = x;
     box.y = y;
     }
 
 };
-
-
 
 
 class output:public variable
@@ -92,10 +96,6 @@ public:
     {
 
         bit=a.get_bit();
-        if(bit)
-            {
-               level_completed();
-            }
     }
 
 
@@ -107,7 +107,7 @@ class input:public variable
 {
     public:
 
-input (int a,int b):variable (a,b){}
+input (int a,int b):variable(a ,b){}
 
 void click_check()
 {
@@ -148,28 +148,26 @@ wire(variable a )
     }
 };
 
-int load_digital()
+
+
+
+
+void sdl_init();
+void sdl_quit();
+
+
+
+int main(int argc, char* argv[])
 {
-    digital_loadfile();
 
-      return (level1());
-
-}
-
-int level1()
-{
-        input a(310,210);
-        input b(310,270);
-        input c(310,540);
-        input d(310,480);
+    sdl_init();
+        input a(60,40);
+        input b(100,150);
+        input c(200,200);
+        input d(300,300);
         wire w1,w2;
-        levelno = TTF_RenderText_Solid(font,"Level 1",textcolor);
-     applySurface(30,0,levelno,screen);
 
-        applySurface(330,150,levelImage,screen);
-        applySurface(1040,5,home,screen);
-        Buttons bo(1040,5,234,94);
-        output o(1015,375);
+        output o(0,0);
     while(running)
     {
         while(SDL_PollEvent(&event))
@@ -181,22 +179,50 @@ int level1()
                     break;
             }
             w1=a&b;
-            w2=c|d;
-            o=w1&w2;
-            //o.zero();
-            o.setposition(1015,375);
-            o.flipscreen();
+        w2=c|d;
+o=w1&w2;
+//o.zero();
+o.setposition(0,0);
+o.flipscreen();
             a.click_check();
             b.click_check();
             c.click_check();
             d.click_check();
-            bo.click_check();
-            if (bo.get_clicks()) return 2;
         }
     }
+  sdl_quit();
+}
+void sdl_init()
+{
+    SDL_Init(SDL_INIT_EVERYTHING);
+
+    screen = SDL_SetVideoMode(640, 480, 32, SDL_SWSURFACE);
+
+    setBMP = SDL_LoadBMP("set.bmp");
+
+    resetBMP=SDL_LoadBMP("Reset.bmp");
+
+    screenColor = SDL_MapRGB(screen->format, 25, 23, 90);
+     SDL_FillRect(screen, NULL, screenColor);
+
+
+}
+
+void sdl_quit()
+{
+      SDL_FreeSurface(screen);
+    SDL_FreeSurface(setBMP);
+    SDL_FreeSurface(resetBMP);
+
+    SDL_Quit();
+}
+
+void level1()
+{
+
 }
 
 
 
 
-#endif // DIGITAL_H_INCLUDED
+#endif // ANALOG_H_INCLUDED

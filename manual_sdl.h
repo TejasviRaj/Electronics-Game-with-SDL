@@ -249,14 +249,9 @@ bu2.temp = buttonImage1;
                     bu2.click_check();
                 }
         }
-        if (quit)
-         {
-        display_screen_mainpage(bu1,bu2);
-        //   if (SDL_Flip(screen) == -1) return false;
-           SDL_Delay(200);
-               }
-
     }
+    display_screen_mainpage(bu1,bu2);
+    SDL_Delay(200);
     return true;
 }
 
@@ -274,8 +269,8 @@ void load_page_secondpage(char ch)
             music = Mix_LoadMUS("beat.wav");
             break;
     }
-     click = Mix_LoadWAV("beat1.wav");
-    font = TTF_OpenFont("digifaw.ttf",80);
+//     click = Mix_LoadWAV("beat1.wav");
+  //  font = TTF_OpenFont("digifaw.ttf",80);
     buttonImage1 = load_image("page-11.bmp",'y');
     buttonImage2 = load_image("page-21.bmp",'y');
 
@@ -301,11 +296,41 @@ void display_page_secondpage(Buttons &b1,Buttons &b2,Buttons &b3,char ch)
          break;
      }
      applySurface(350,0,message,screen);
+            SDL_Flip(screen);
 
 }
 
 
+void second_page(Buttons& b1,Buttons& b2,Buttons&b3 ,char ch)
+{
+     quit = false;
+     set_clip(0,0,510,160,0,160,0,310);
+        load_page_secondpage(ch);
 
+    //Mix_PlayMusic( music, -1 );
+    b1.temp = buttonImage1;
+            b2.temp = buttonImage1;
+            b3.temp = buttonImage1;
+    display_page_secondpage(b1,b2,b3,ch);
+    SDL_Flip(screen);
+    while(quit==false)
+    {
+        while(SDL_PollEvent(&event))
+        {
+            if (event.type == SDL_QUIT) quit = true;
+            if (!(b1.get_clicks()||b2.get_clicks()||b3.get_clicks()))
+              {
+                    b1.click_check();
+                    b2.click_check();
+                    b3.click_check();
+              }
+        }
+    }
+         display_page_secondpage(b1,b2,b3,ch);
+            SDL_Delay(200);
+
+
+}
 
 void level_completed()
 {
