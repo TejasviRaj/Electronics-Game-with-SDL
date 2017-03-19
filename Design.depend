@@ -39,7 +39,7 @@
 	"SDL/SDL_ttf.h"
 	"manual_sdl.h"
 
-1489837597 source:h:\design\main.cpp
+1489888684 source:h:\design\main.cpp
 	"Design.h"
 	"digital.h"
 	"analog.h"
@@ -58,18 +58,38 @@
 	"SDL/SDL_ttf.h"
 	"manual_sdl.h"
 
-1489887868 h:\design\design.h
+1489889053 h:\design\design.h
 	"SDL/SDL.h"
 	"SDL/SDL_image.h"
 	"SDL/SDL_mixer.h"
 	"SDL/SDL_ttf.h"
 	<string>
 
-1489887729 h:\design\digital.h
+1489888255 h:\design\digital.h
 	<SDL/SDL.h>
 	"Design.h"
 
-1489887964 h:\design\analog.h
+1489888485 h:\design\analog.h
+	<SDL/SDL.h>
+	"Design.h"
+
+1489888684 source:h:\game\design\main.cpp
+	"Design.h"
+	"digital.h"
+	"analog.h"
+
+1489889053 h:\game\design\design.h
+	"SDL/SDL.h"
+	"SDL/SDL_image.h"
+	"SDL/SDL_mixer.h"
+	"SDL/SDL_ttf.h"
+	<string>
+
+1489888255 h:\game\design\digital.h
+	<SDL/SDL.h>
+	"Design.h"
+
+1489890823 h:\game\design\analog.h
 	<SDL/SDL.h>
 	"Design.h"
 

@@ -243,7 +243,7 @@ bu2.temp = buttonImage1;
     {
         while(SDL_PollEvent(&event))
         {
-                if (event.type == SDL_QUIT) quit = true;
+                if (event.type == SDL_QUIT) clean_up();
                 if (!(bu1.get_clicks()||bu2.get_clicks()))
                 {
                     bu1.click_check();
@@ -318,7 +318,7 @@ void second_page(Buttons& b1,Buttons& b2,Buttons&b3 ,char ch)
     {
         while(SDL_PollEvent(&event))
         {
-            if (event.type == SDL_QUIT) quit = true;
+            if (event.type == SDL_QUIT) SDL_Quit();
             if (!(b1.get_clicks()||b2.get_clicks()||b3.get_clicks()))
               {
                     b1.click_check();

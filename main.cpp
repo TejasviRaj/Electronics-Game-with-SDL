@@ -37,36 +37,23 @@ Buttons b3(618,475,164,72);
         if (bu2.get_clicks())
         {
 
-
-        {
-
         if(load_digital1()==2)
             mainpage_loading();
-        }
-        {
 
         if(load_digital2()==2)
             mainpage_loading();
-        }
-        {
 
         if(load_digital3()==2)
             mainpage_loading();
+
         }
-        }
-    }
 
-        if (bu1.get_clicks())
-        {
-
-
+          if (bu1.get_clicks())
         {
             if(load_analog1()==2)
             mainpage_loading();
-        }
-         if (bu1.get_clicks())
-        {
-            if(load_analog2()==2)
+
+            load_analog2();
             mainpage_loading();
         }
 

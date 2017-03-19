@@ -182,7 +182,7 @@ int level1_digital()
             switch(event.type)
             {
                 case SDL_QUIT:
-                    running = false;
+                    clean_up();
                     break;
             }
             w1=a&b;
@@ -236,7 +236,7 @@ int level2_digital()
             switch(event.type)
             {
                 case SDL_QUIT:
-                    running = false;
+                    clean_up();
                     break;
             }
             w1=a&b;
@@ -289,7 +289,7 @@ int level3_digital()
             switch(event.type)
             {
                 case SDL_QUIT:
-                    running = false;
+                    clean_up();
                     break;
             }
             w1=a|b;

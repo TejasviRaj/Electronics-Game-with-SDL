@@ -199,7 +199,7 @@ applySurface(30,0,levelno,screen);
             switch(event.type)
             {
                 case SDL_QUIT:
-                    running = false;
+                    clean_up();
                     break;
             }
 
@@ -252,7 +252,7 @@ applySurface(30,0,levelno,screen);
             switch(event.type)
             {
                 case SDL_QUIT:
-                    running = false;
+                    clean_up();
                     break;
             }
 
