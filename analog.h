@@ -212,11 +212,15 @@ o.flipscreen();
 
 bo.click_check();
             if (bo.get_clicks()) return 2;
-
+if (o.get_bit())
+             {
+            {SDL_Delay(level_delay);
+            return 1;
+            }
         }
     }
 }
-
+}
 
 int load_analog2()
 {
@@ -261,11 +265,15 @@ o.flipscreen();
 
 bo.click_check();
             if (bo.get_clicks()) return 2;
+             if (o.get_bit())
 
-        }
+            {SDL_Delay(level_delay);
+            return 2;
+            }
+
     }
 }
-
+}
 
 
 

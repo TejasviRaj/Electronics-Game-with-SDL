@@ -197,6 +197,11 @@ int level1_digital()
             d.click_check();
             bo.click_check();
             if (bo.get_clicks()) return 2;
+            if (o.get_bit())
+            {SDL_Delay(level_delay);
+            return 1;
+        }
+
         }
     }
 }
@@ -246,6 +251,10 @@ int level2_digital()
             d.click_check();
             bo.click_check();
             if (bo.get_clicks()) return 2;
+            if (o.get_bit())
+            {SDL_Delay(level_delay);
+            return 1;
+        }
         }
     }
 }
@@ -295,6 +304,10 @@ int level3_digital()
             d.click_check();
             bo.click_check();
             if (bo.get_clicks()) return 2;
+            if (o.get_bit())
+            {SDL_Delay(level_delay);
+            return 2;
+        }
         }
     }
 }

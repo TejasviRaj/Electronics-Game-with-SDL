@@ -55,7 +55,7 @@ SDL_Event event;
 SDL_Rect clips[3];
 
 bool quit = false;
-
+int level_delay=2000;
 class Buttons
 {
 private:
