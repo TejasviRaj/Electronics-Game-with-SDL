@@ -43,8 +43,8 @@ Buttons b3(618,475,164,72);
         if(load_digital2()==2)
             mainpage_loading();
 
-        if(load_digital3()==2)
-            mainpage_loading();
+        load_digital3();
+
 
         }
 
