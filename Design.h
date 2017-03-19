@@ -243,7 +243,7 @@ bu2.temp = buttonImage1;
     {
         while(SDL_PollEvent(&event))
         {
-                if (event.type == SDL_QUIT) clean_up();
+                if (event.type == SDL_QUIT) SDL_Quit();
                 if (!(bu1.get_clicks()||bu2.get_clicks()))
                 {
                     bu1.click_check();

@@ -45,7 +45,7 @@ Buttons b3(618,475,164,72);
 
         load_digital3();
 
-
+mainpage_loading();
         }
 
           if (bu1.get_clicks())

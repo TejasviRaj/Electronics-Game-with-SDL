@@ -73,12 +73,12 @@
 	<SDL/SDL.h>
 	"Design.h"
 
-1489891737 source:h:\game\design\main.cpp
+1489892195 source:h:\game\design\main.cpp
 	"Design.h"
 	"digital.h"
 	"analog.h"
 
-1489889053 h:\game\design\design.h
+1489892333 h:\game\design\design.h
 	"SDL/SDL.h"
 	"SDL/SDL_image.h"
 	"SDL/SDL_mixer.h"
