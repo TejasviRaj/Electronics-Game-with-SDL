@@ -3,7 +3,8 @@
 #include <SDL/SDL.h>
 #include "Design.h"
 int level1_analog();
-
+int level2_analog();
+int level3_analog();
 using namespace std;
 
 class circuit
@@ -157,19 +158,122 @@ public:
         {
             bit=1;
             level_completed();
+
+
         }
         else if (circuit1.get_bit()==1 && circuit2.get_bit()==1)
             bit=0;
+
     }
 
 
 };
 
-int load_analog()
+int load_analog1()
 {
     analog_loadfile();
 
       return (level1_analog());
+
+}
+
+int level1_analog()
+{
+    running =true;
+            applySurface(1040,5,home,screen);
+
+        applySurface(0,0,levelImage,screen);
+
+        npn a(720,375);
+        //npn b(930,192);
+        LED o(570,192);
+
+                levelno = TTF_RenderText_Solid(font,"Level 1",textcolor);
+applySurface(30,0,levelno,screen);
+
+        Buttons bo(1040,5,234,94);
+    while(running)
+    {
+        while(SDL_PollEvent(&event))
+        {
+            switch(event.type)
+            {
+                case SDL_QUIT:
+                    running = false;
+                    break;
+            }
+
+       circuit1=a;
+       //circuit2=b;
+o.check();
+o.flipscreen();
+            a.click_check();
+//            b.click_check();
+
+bo.click_check();
+            if (bo.get_clicks()) return 2;
+
+        }
+    }
+}
+
+
+int load_analog2()
+{
+    analog_loadfile1();
+
+      return (level2_analog());
+
+}
+
+int level2_analog()
+{
+    running =true;
+            applySurface(1040,5,home,screen);
+
+        applySurface(0,0,levelImage,screen);
+
+        npn a(415,600);
+        npn b(1018,287);
+        LED o(1030,478);
+
+                levelno = TTF_RenderText_Solid(font,"Level 2",textcolor);
+applySurface(30,0,levelno,screen);
+
+        Buttons bo(1040,5,234,94);
+    while(running)
+    {
+        while(SDL_PollEvent(&event))
+        {
+            switch(event.type)
+            {
+                case SDL_QUIT:
+                    running = false;
+                    break;
+            }
+
+       circuit1=a;
+       circuit2=b;
+o.check();
+o.flipscreen();
+            a.click_check();
+            b.click_check();
+
+bo.click_check();
+            if (bo.get_clicks()) return 2;
+
+        }
+    }
+}
+
+
+
+
+/*int load_analog3()
+{
+    analog_loadfile2();
+
+      return (level3_analog());
 
 }
 
@@ -211,12 +315,14 @@ bo.click_check();
 
         }
     }
-}
+}*/
+
 
 
 
 
 #endif
+
 
 
 

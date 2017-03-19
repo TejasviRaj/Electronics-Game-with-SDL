@@ -3,8 +3,12 @@
 
 #include <SDL/SDL.h>
 #include "Design.h"
-int load_digital();
+int load_digital1();
 int level1_digital();
+int load_digital2();
+int level2_digital();
+int load_digital3();
+int level3_digital();
 
 class variable
 {
@@ -148,7 +152,7 @@ wire(variable a )
     }
 };
 
-int load_digital()
+int load_digital1()
 {
     digital_loadfile();
 
@@ -197,7 +201,106 @@ int level1_digital()
     }
 }
 
+int load_digital2()
+{
+    digital_loadfile1();
+
+      return (level2_digital());
+
+}
+
+int level2_digital()
+{
+    running=true;
+        input a(310,210);
+        input b(310,270);
+        input c(310,540);
+        input d(310,480);
+        wire w1,w2;
+        levelno = TTF_RenderText_Solid(font,"Level 2",textcolor);
+     applySurface(30,0,levelno,screen);
+
+        applySurface(330,150,levelImage,screen);
+        applySurface(1040,5,home,screen);
+        Buttons bo(1040,5,234,94);
+        output o(1015,375);
+    while(running)
+    {
+        while(SDL_PollEvent(&event))
+        {
+            switch(event.type)
+            {
+                case SDL_QUIT:
+                    running = false;
+                    break;
+            }
+            w1=a&b;
+            w2=c&d;
+            o=w1|w2;
+            //o.zero();
+            o.setposition(1015,375);
+            o.flipscreen();
+            a.click_check();
+            b.click_check();
+            c.click_check();
+            d.click_check();
+            bo.click_check();
+            if (bo.get_clicks()) return 2;
+        }
+    }
+}
+
+int load_digital3()
+{
+    digital_loadfile2();
+
+      return (level3_digital());
+
+}
+
+int level3_digital()
+{
+    running=true;
+        input a(310,210);
+        input b(310,270);
+        input c(310,540);
+        input d(310,480);
+        wire w1,w2;
+        levelno = TTF_RenderText_Solid(font,"Level 3",textcolor);
+     applySurface(30,0,levelno,screen);
+
+        applySurface(330,150,levelImage,screen);
+        applySurface(1040,5,home,screen);
+        Buttons bo(1040,5,234,94);
+        output o(1015,375);
+    while(running)
+    {
+        while(SDL_PollEvent(&event))
+        {
+            switch(event.type)
+            {
+                case SDL_QUIT:
+                    running = false;
+                    break;
+            }
+            w1=a|b;
+            w2=c|d;
+            o=w1&w2;
+            //o.zero();
+            o.setposition(1015,375);
+            o.flipscreen();
+            a.click_check();
+            b.click_check();
+            c.click_check();
+            d.click_check();
+            bo.click_check();
+            if (bo.get_clicks()) return 2;
+        }
+    }
+}
+
 
 
 
 #endif // DIGITAL_H_INCLUDED
+

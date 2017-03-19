@@ -351,7 +351,43 @@ screenColor = SDL_MapRGB(screen->format, 25, 90, 25);
 SDL_FillRect(screen, NULL, screenColor);
 }
 
+void digital_loadfile1()
+{
+complete = Mix_LoadWAV("complete.WAV");
+message = load_image("complete1.bmp",'y');
+setBMP = load_image("set1.bmp",'y');
+resetBMP=load_image("reset1.bmp",'y');
+levelImage = load_image("gate2.bmp",'y');
+home=load_image("home.bmp");
+screenColor = SDL_MapRGB(screen->format, 25, 90, 25);
+SDL_FillRect(screen, NULL, screenColor);
+}
+
+void digital_loadfile2()
+{
+complete = Mix_LoadWAV("complete.WAV");
+message = load_image("complete1.bmp",'y');
+setBMP = load_image("set1.bmp",'y');
+resetBMP=load_image("reset1.bmp",'y');
+levelImage = load_image("gate3.bmp",'y');
+home=load_image("home.bmp");
+screenColor = SDL_MapRGB(screen->format, 25, 90, 25);
+SDL_FillRect(screen, NULL, screenColor);
+}
+
 void analog_loadfile()
+{
+complete = Mix_LoadWAV("complete.WAV");
+message = load_image("complete1.bmp",'y');
+setBMP = load_image("set1.bmp",'y');
+resetBMP=load_image("reset1.bmp",'y');
+levelImage = load_image("2.bmp",'y');
+home=load_image("home.bmp");
+screenColor = SDL_MapRGB(screen->format, 25, 90, 25);
+SDL_FillRect(screen, NULL, screenColor);
+}
+
+void analog_loadfile1()
 {
 complete = Mix_LoadWAV("complete.WAV");
 message = load_image("complete1.bmp",'y');
@@ -363,4 +399,17 @@ screenColor = SDL_MapRGB(screen->format, 25, 90, 25);
 SDL_FillRect(screen, NULL, screenColor);
 }
 
+/*void analog_loadfile2()
+{
+complete = Mix_LoadWAV("complete.WAV");
+message = load_image("complete1.bmp",'y');
+setBMP = load_image("set1.bmp",'y');
+resetBMP=load_image("reset1.bmp",'y');
+levelImage = load_image("resistor.bmp",'y');
+home=load_image(".bmp");
+screenColor = SDL_MapRGB(screen->format, 25, 90, 25);
+SDL_FillRect(screen, NULL, screenColor);
+}*/
+
 #endif // DESIGN_H_INCLUDED
+
